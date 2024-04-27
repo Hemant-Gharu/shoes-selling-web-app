@@ -8,6 +8,7 @@ const Navbar = () => {
          
       <Link to="/" className={styles.link}>Logo</Link>
       <Link to="/profile">Profile</Link>
+     
       </div>
    )
 }

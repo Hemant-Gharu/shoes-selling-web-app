@@ -1,4 +1,5 @@
 import { useFirebase } from "../context/Firebase";
+import Home from "./Home";
 
 const Logo = () => {
    const firebase = useFirebase();
@@ -8,7 +9,7 @@ const Logo = () => {
 
    return (
       <>
-         <h1>Logo</h1>
+         <Home/>
       </>
    )
 }

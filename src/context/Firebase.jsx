@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-import { addDoc, collection, getFirestore } from "firebase/firestore";
-import { getStorage, uploadBytes, ref  } from "firebase/storage";
+import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore";
+import { getStorage, uploadBytes, ref, getDownloadURL  } from "firebase/storage";
 import { createContext, useContext } from "react";
 
 const firebaseConfig = {
@@ -32,24 +32,26 @@ export const FirebaseProvider = ({ children }) => {
    }
 
    //save product details
-   const saveProductList = async (title, price, color, soleMatetial, category, brand, gender, rating, image) => {
+   const saveProductList = async (title, price, color, category, brand, gender, rating, image) => {
       const imgRef = ref(storage, `Productimages/${Date.now()}-${image.name}`);
       const saveImg = await uploadBytes(imgRef, image);
       return await addDoc(collection(firestore, "productdetails"), {
-         title, price: Number(price), color, soleMatetial, category, brand, gender, rating,
+         title, price: Number(price), color, category, brand, gender, rating,
          imageURL: saveImg.ref.fullPath
       })
    }
-   // const imageUpload = (e, image)=>{
-   //    const imageRef = ref(storage, `productimages/images/${image.name}`);
-   //    uploadBytes(imageRef, image)
-   //    .then((snapshot)=> getDownloadURL(snapshot.ref))
-   //    .then((url)=> console.log(url))
-   // }
 
-
+   //retrieve products data 
+   const allProductsDetails = ()=>{
+      return getDocs(collection(firestore, "productdetails"));
+   }
+   //get image 
+   const getImageURL = (path)=>{
+      return getDownloadURL(ref(storage, path));
+   }
+   
 
    return (
-      <FirebaseContext.Provider value={{ handleSignup, saveProductList }}>{children}</FirebaseContext.Provider>
+      <FirebaseContext.Provider value={{ handleSignup, saveProductList, allProductsDetails, getImageURL }}>{children}</FirebaseContext.Provider>
    )
 }

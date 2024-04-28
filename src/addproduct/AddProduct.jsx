@@ -10,7 +10,6 @@ const AddProduct = () => {
    const [title, setTitle] = useState("");
    const [price, setPrice] = useState("");
    const [color, setColor] = useState("");
-   const [soleMatetial, setSoleMatetial] = useState("");
    const [category, setCategory] = useState("");
    const [brand, setBrand] = useState("");
    const [gender, setGender] = useState("");
@@ -19,21 +18,9 @@ const AddProduct = () => {
 
    const handleSaveDetails = async (e) => {
       e.preventDefault();
-      await firebase.saveProductList(title, price, color, soleMatetial, category, brand, gender, rating, image);
+      await firebase.saveProductList(title, price, color, category, brand, gender, rating, image);
    }
 
-   // const handleImageUpload = (e) => {
-   //    e.preventDefault();
-   //    firebase.imageUpload(image);
-   // }
-
-   // const handleImgUpload = (e)=>{
-   //    const img = {
-   //       preview: URL.createObjectURL(e.target.files[0]),
-   //       imgName: e.target.files[0]
-   //    }
-   //    setImage(img);
-   // }
 
    return (
       <form className="form">
@@ -50,15 +37,8 @@ const AddProduct = () => {
             <input type="text" placeholder="Color" onChange={(e) => setColor(e.target.value)} value={color} />
          </div>
          <div>
-            <label>Sole Material: </label>
-            <input type="text" placeholder="Sole Material" onChange={(e) => setSoleMatetial(e.target.value)} value={soleMatetial} />
-         </div>
-         <div>
             <label>Category: </label>
             <select onChange={(e) => setCategory(e.target.value)}>
-               {/* {categories.map((category, idx) => (
-                  <option key={idx}>{category.value}</option>
-               ))} */}
                <option value="Sports">Sports</option>
                <option value="Sneakers">Sneakers</option>
                <option value="Formal">Formal</option>
@@ -77,6 +57,7 @@ const AddProduct = () => {
                <option value="Woodland">Woodland</option>
                <option value="Reebok">Reebok</option>
                <option value="Asics">Asics</option>
+               <option value="Asian">Asian</option>
             </select>
          </div>
          <div>
@@ -101,7 +82,6 @@ const AddProduct = () => {
          <div>
             <label>Image: </label>
             <input type="file" name="file" onChange={(e) => setImage(e.target.files[0])} />
-        
          </div>
          <button onClick={handleSaveDetails}>Save Details</button>
       </form>

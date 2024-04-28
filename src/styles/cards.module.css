@@ -1,0 +1,40 @@
+.card {
+   width: 16rem;
+   height: 22.2rem;
+   color: black;
+   margin: 1rem;
+   padding: 0.5rem;
+   cursor: pointer;
+}
+.card:hover{
+   box-shadow: 0 0px 10px rgb(89, 88, 88);
+   opacity: 4;
+   transition: 0.3s ease;
+}
+.imageContainer{
+   height: 15rem;
+overflow: hidden;
+}
+
+.productImg {
+width: 100%;
+height: auto;
+}
+.description{
+   height: 7rem;
+   padding: 0.5rem 0;
+   font-size: 1.3rem;
+}
+.title {
+   overflow: hidden;
+   white-space: nowrap;
+   text-overflow: ellipsis;
+   width: 12rem;
+   margin: 5px 0;
+   opacity: 0.8;
+}
+.price{
+   font-size: 1.2rem;
+   font-weight: bold;
+   
+}

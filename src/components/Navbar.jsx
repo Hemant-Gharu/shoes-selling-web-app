@@ -7,7 +7,7 @@ const Navbar = () => {
       <div className={`navbar ${styles.nav}`}>
          
       <Link to="/" className={styles.link}>Logo</Link>
-      <Link to="/profile">Profile</Link>
+      <Link to="/profile" className={styles.link}>Profile</Link>
      
       </div>
    )

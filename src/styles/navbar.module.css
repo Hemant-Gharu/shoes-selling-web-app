@@ -1,4 +1,5 @@
 .nav{
+   background-color: #ced4da;
    height: 2rem;
    width: 100%;
    border: 1px solid white;
@@ -6,5 +7,5 @@
    justify-content: space-around; */
 }
 .link{
-   margin: 0 2rem;
+   margin: 0 1rem;
 }
